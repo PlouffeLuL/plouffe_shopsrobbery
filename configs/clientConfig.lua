@@ -1,16 +1,15 @@
 Sh = {}
 TriggerServerEvent("plouffe_shopsrobbery:sendConfig")
+local cookie
 
-RegisterNetEvent("plouffe_shopsrobbery:getConfig",function(list)
-	if not list then
-		while true do
-			Sh = nil
-		end
-	else
+cookie = RegisterNetEvent("plouffe_shopsrobbery:getConfig", function(list)
+	if list then
 		for k,v in pairs(list) do
 			Sh[k] = v
 		end
-
-		Sh:Start()
+	else
+		Sh = nil
 	end
+
+	RemoveEventHandler(cookie)
 end)
