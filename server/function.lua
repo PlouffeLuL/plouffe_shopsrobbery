@@ -58,22 +58,22 @@ function Sh.ValidateConfig()
             Wait(1000)
             print("^1 [ERROR] ^0 Invalid configuration, missing 'lockpick_items' convar. Refer to documentation")
         end
-    elseif not Fle.addMoneyIntervall then
+    elseif not Sh.addMoneyIntervall then
         while true do
             Wait(1000)
             print("^1 [ERROR] ^0 Invalid configuration, missing 'add_money_interval' convar. Refer to documentation")
         end
-    elseif not Fle.minMoneyAddition then
+    elseif not Sh.minMoneyAddition then
         while true do
             Wait(1000)
             print("^1 [ERROR] ^0 Invalid configuration, missing 'min_money_addition' convar. Refer to documentation")
         end
-    elseif not Fle.maxMoneyAddition then
+    elseif not Sh.maxMoneyAddition then
         while true do
             Wait(1000)
             print("^1 [ERROR] ^0 Invalid configuration, missing 'max_money_addition' convar. Refer to documentation")
         end
-    elseif not Fle.maxShopsMoney then
+    elseif not Sh.maxShopsMoney then
         while true do
             Wait(1000)
             print("^1 [ERROR] ^0 Invalid configuration, missing 'max_shops_money' convar. Refer to documentation")
