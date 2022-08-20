@@ -25,20 +25,24 @@ function Sh.TryRob()
     local closest = Sh:GetClosestSafe()
 
     if not closest then
-        return Utils:Notify(Lang.shops_no_safe)
+        return Interface.Notifications.Show({
+            style = "error",
+            header = "Shops",
+            message = Lang.shops_no_safe
+        })
     end
 
     for k,v in pairs(Sh.lockpick_items) do
         if Utils:GetItemCount(k) < v then
             return Interface.Notifications.Show({
                 style = "error",
-                header = "Paleto bank",
+                header = "Shops",
                 message = Lang.missing_something
             })
         end
     end
 
-    Utils:PlayAnim(nil, "anim@amb@clubhouse@tutorial@bkr_tut_ig3@", "machinic_loop_mechandplayer" , 1, 3.0, 2.0, nil, true, true, true)
+    Utils:PlayAnim(nil, "anim@amb@clubhouse@tutorial@bkr_tut_ig3@", "machinic_loop_mechandplayer" , 1, 2.0, 1.0, 100000, false, true, true)
 
     local succes = Interface.Lockpick.New({
         amount = 18,
@@ -49,7 +53,11 @@ function Sh.TryRob()
     Utils:StopAnim()
 
     if not succes then
-        return exports.plouffe_dispatch:SendAlert("10-90 A")
+        if GetResourceState("plouffe_dispatch") == "started" then
+            exports.plouffe_dispatch:SendAlert("10-90 A")
+        end
+
+        return
     end
 
     TriggerServerEvent("plouffe_shopsrobbery:request_loots", Sh.Utils.MyAuthKey)
