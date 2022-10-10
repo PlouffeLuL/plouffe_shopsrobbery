@@ -20,7 +20,7 @@ end
 
 function Sh.LoadPlayer()
     local playerId = source
-    local registred, key = Auth:Register(playerId)
+    local registred, key = Auth.Register(playerId)
 
     while not Server.ready do
         Wait(100)
@@ -128,7 +128,7 @@ end
 function Sh.RequestLoots(authkey)
     local playerId = source
 
-    if not Auth:Validate(playerId,authkey) or not Auth:Events(playerId,"plouffe_shopsrobbery:request_loots") then
+    if not Auth.Validate(playerId,authkey) or not Auth.Events(playerId,"plouffe_shopsrobbery:request_loots") then
         return
     end
 

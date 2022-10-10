@@ -33,7 +33,7 @@ function Sh.TryRob()
     end
 
     for k,v in pairs(Sh.lockpick_items) do
-        if Utils:GetItemCount(k) < v then
+        if Utils.GetItemCount(k) < v then
             return Interface.Notifications.Show({
                 style = "error",
                 header = "Shops",
@@ -42,7 +42,7 @@ function Sh.TryRob()
         end
     end
 
-    Utils:PlayAnim(nil, "anim@amb@clubhouse@tutorial@bkr_tut_ig3@", "machinic_loop_mechandplayer" , 1, 2.0, 1.0, 100000, false, true, true)
+    Utils.PlayAnim(nil, "anim@amb@clubhouse@tutorial@bkr_tut_ig3@", "machinic_loop_mechandplayer" , 1, 2.0, 1.0, 100000, false, true, true)
 
     local succes = Interface.Lockpick.New({
         amount = 18,
@@ -50,7 +50,7 @@ function Sh.TryRob()
         maxKeys = 6
     })
 
-    Utils:StopAnim()
+    Utils.StopAnim()
 
     if not succes then
         if GetResourceState("plouffe_dispatch") == "started" then
